@@ -1,29 +1,11 @@
 <?php 
 
-try {
-
-  $stmt = $db->query('SELECT * FROM caravans ');
-
-  if ($stmt->rowCount() > 0) {
-      $i = 0;
-      foreach ($stmt as $row) {
-
-          $caravans[$i] = new Caravan($row['numberPlate'],$row['producer'], $row['model'], $row['price'], $row['weight'], $row['length'], $row['lengthInside'], $row['width'], $row['widthInside'], $row['people'], $row['water'], $row['hotWater'], $row['shower'], $row['fridge']);
-          $i++;
-      }
-  } else
-      die(json_encode("error"));
-  echo $caravans[0]->getModel();
-} catch (\PDOException $e) {
-  throw new \PDOException($e->getMessage(), (int) $e->getCode());
-}
-
-
 class Caravan
 {
-  private $numberPlate,$producer,$model,$price,$weight,$length,$lengthInside,$width,$widthInside,$people,$water,$hotwater,$shower,$fridge;
+  private $caravanID,$numberPlate,$producer,$model,$price,$weight,$length,$lengthInside,$width,$widthInside,$people,$water,$hotwater,$shower,$fridge,$picture;
 
-    public function caravan($numberPlate,$producer,$model,$price,$weight,$length,$lengthInside,$width,$widthInside,$people,$water,$hotwater,$shower,$fridge){
+    public function caravan($caravanID,$numberPlate,$producer,$model,$price,$weight,$length,$lengthInside,$width,$widthInside,$people,$water,$hotwater,$shower,$fridge,$picture){
+      $this->caravanID = $caravanID;
       $this->numberPlate = $numberPlate;
       $this->producer = $producer;
       $this->model = $model;
@@ -38,7 +20,15 @@ class Caravan
       $this->hotwater = $hotwater;
       $this->shower = $shower;
       $this->fridge = $fridge;
-  
+      $this->picture = $picture;
+    }
+
+    public function getCaravanID(){
+      return $this->caravanID;
+    }
+
+    public function getNumberPlate(){
+      return $this->numberPlate;
     }
 
     public function getProducer(){
@@ -93,7 +83,9 @@ class Caravan
       return $this->fridge;
     }
 
-
+    public function getPicture(){
+      return $this->picture;
+    }
   }
 
 ?>
