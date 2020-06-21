@@ -2,7 +2,7 @@
 
 class Client extends User
 {
-  public function addReservation($producer,$model,$begin,$end){
+  public function addReservation($modelID,$begin,$end){
 
     global $db;
 
@@ -13,11 +13,10 @@ class Client extends User
     }
     
     $sth = $db->prepare('SELECT caravans.* FROM caravans LEFT JOIN (SELECT caravans.caravanID FROM caravans INNER JOIN reservations ON 
-      reservations.caravanID = caravans.caravanID WHERE caravans.producer=:producer AND caravans.model=:model AND reservations.end > :begin
-      AND reservations.begin < :end ) as t2 ON caravans.caravanID = t2.caravanID WHERE caravans.producer=:producer AND caravans.model=:model AND t2.caravanID IS NULL LIMIT 1');
+      reservations.caravanID = caravans.caravanID WHERE caravans.modelID=:modelID AND reservations.end > :begin
+      AND reservations.begin < :end ) as t2 ON caravans.caravanID = t2.caravanID WHERE caravans.modelID=:modelID AND t2.caravanID IS NULL LIMIT 1');
     
-    $sth->bindValue(':producer', $producer, PDO::PARAM_STR);
-    $sth->bindValue(':model', $model, PDO::PARAM_STR);
+    $sth->bindValue(':modelID', $modelID, PDO::PARAM_STR);
     $sth->bindValue(':begin', $begin, PDO::PARAM_STR);
     $sth->bindValue(':end', $end, PDO::PARAM_STR);
     $sth->execute();

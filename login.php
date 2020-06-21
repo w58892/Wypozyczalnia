@@ -2,7 +2,7 @@
 
 session_start();
 require_once("config.php");
-require_once("User.php");
+require_once("class/User.php");
 
 if (isset($_SESSION['userID']))
 {

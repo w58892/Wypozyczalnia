@@ -1,3 +1,8 @@
+//var url_string = "http://www.example.com/t.html?a=1&b=3&c=m2-m3-m4-m5"; //window.location.href
+url = new URL(window.location.href);
+modelID = url.searchParams.get("id");
+//console.log(c);
+
 document.getElementById("addReservation").addEventListener("click", 
     function(){
         bgn = new Date(document.getElementById("begin").value);
@@ -22,13 +27,13 @@ document.getElementById("addReservation").addEventListener("click",
         begin = bgn.getUTCFullYear()+'-'+beginMonth+'-'+beginDay;
         end = en.getUTCFullYear()+'-'+endMonth+'-'+endDay;
 
-        producer="Hobby";
-        model="lolol";
+        //producer="Hobby";
+        //modelID=c;
 
         fetch('reser.php', {
             method: 'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-            body: 'producer=' + producer + '&model=' + model + '&begin=' + begin + '&end=' + end
+            body: 'modelID=' + modelID + '&begin=' + begin + '&end=' + end
         })
         .then((resp) => {
             console.log(resp);

@@ -2,20 +2,49 @@
 
 class Worker extends User
 {
-  public function addCaravan($numberPlate, $producer,$model,$price,$weight,$length,$lengthInside,$width,$widthInside,$people,$water,$hotwater,$shower,$fridge,$picture){
+  public function addCaravan($numberPlate,$modelID){
     global $db;
 
-    $sth = $db->prepare('SELECT * FROM caravans WHERE producer=:producer AND model=:model limit 1');
+
+    $sth = $db->prepare('SELECT * FROM caravans WHERE numberPlate=:numberPlate limit 1');
+    $sth->bindValue(':numberPlate', $numberPlate, PDO::PARAM_STR);
+    $sth->execute();
+    $caravan = $sth->fetch(PDO::FETCH_ASSOC);
+    if ($caravan) {
+      $response['caravan'] = "exist";
+      die(json_encode($response));      
+    }       
+
+
+    $sth = $db->prepare('INSERT INTO caravans VALUE (NULL,:numberPlate,:modelID)');
+    $sth->bindValue(':numberPlate', $numberPlate, PDO::PARAM_STR);
+    $sth->bindValue(':modelID', $modelID, PDO::PARAM_INT);
+
+    $caravan = $sth->execute();
+        
+    if ($caravan == true) {
+      $response['success'] = 'true';
+      die(json_encode($response));
+    }else{
+      $response['success'] = 'false';
+      die(json_encode($response));
+    }      
+  }
+
+  public function addCaravanModel($producer,$model,$price,$weight,$length,$lengthInside,$width,$widthInside,$people,$water,$hotwater,$shower,$fridge,$picture){
+    global $db;
+
+    $sth = $db->prepare('SELECT * FROM caravanmodels WHERE producer=:producer AND model=:model limit 1');
     $sth->bindValue(':producer', $producer, PDO::PARAM_STR);
     $sth->bindValue(':model', $model, PDO::PARAM_STR);
     $sth->execute();
     $caravan = $sth->fetch(PDO::FETCH_ASSOC);
     if ($caravan) {
       $response['caravan'] = "exist";
-    die(json_encode($response));      }
-                
-    $sth = $db->prepare('INSERT INTO caravans VALUE (NULL,:numberPlate,:producer,:model,:price,:weight,:length,:lengthInside,:width,:widthInside,:people,:water,:hotwater,:shower,:fridge,:picture)');
-    $sth->bindValue(':numberPlate', $numberPlate, PDO::PARAM_STR);
+      die(json_encode($response));      
+    }
+
+    $sth = $db->prepare('INSERT INTO caravanmodels VALUE (NULL,:producer,:model,:price,:weight,:length,:lengthInside,:width,:widthInside,:people,:water,:hotwater,:shower,:fridge,:picture)');
     $sth->bindValue(':producer', $producer, PDO::PARAM_STR);
     $sth->bindValue(':model', $model, PDO::PARAM_STR);
     $sth->bindValue(':price', $price, PDO::PARAM_STR);
@@ -39,7 +68,7 @@ class Worker extends User
     }else{
       $response['success'] = 'false';
       die(json_encode($response));
-    }      
+    }
   }
 }
 ?>

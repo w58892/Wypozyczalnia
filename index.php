@@ -1,86 +1,58 @@
 <?php
 session_start();
 require_once("config.php");
-require_once("User.php");
-require_once("Client.php");
-require_once("Worker.php");
-require_once("Caravan.php");
-require_once("Reservation.php");
+require_once("class/User.php");
+require_once("class/Client.php");
+require_once("class/Worker.php");
+require_once("class/Caravan.php");
+require_once("class/Reservation.php");
 require_once("caravanList.php");
-
-
-if (isset($_SESSION['admin']))
-{
-  echo '<a id="href" href="admin.php">Panel administratora</a>';
-  echo '<a id="href" href="logout.php">Wyloguj</a>';
-  $worker = new  Worker;
-  echo $worker->addCaravan("RZ8429D","Hobby","lolol",200,2000,5000,4500,2500,2000,4,25,1,1,1,"wtf.jpg");
-}else if(isset($_SESSION['userID'])){
-  echo "user";
-  echo '<a id="href" href="logout.php">Wyloguj</a>';
-  $client = new Client;
-  echo $client->addReservation("Hobby","lolol","2020-06-15","2020-06-20");
-  echo $client->deleteReservation(1);
-  echo $client->modifyReservation("2020-08-15","2020-08-20",2,2);
-}else
-{
-  $user = new User;
-
-  echo '<a id="href" href="login.html">Zaloguj</a>';
-}
-
-echo "<table border='1'>";
-for($i = 0;$i<count($caravans);$i++)
-{?>
-  <tr>
-    <td><?php echo $caravans[$i]->getModel();?></td> 
-    <td><?php 
-      $adres = $caravans[$i]->getPicture();
-      echo "<img src='upload/$adres' width='100px' height='100px' alt='' /> ";?>
-    </td> 
-    <td><?php 
-      $id =  $caravans[$i]->getCaravanID();
-      echo $id;
-      echo "<a id='href' href='caravanPage.php?id=$id'>Rezerwuj</a>";?>
-    </td> 
-    <td>3</td>
-  </tr>
-  <?php
-  echo $caravans[$i]->getNumberPlate();
-}
-  echo "</table";
-
 ?>
+<html>
+<body>
+  <header>
+  <a id="href" href="index.php"><img src='images/logo.png'/></a>
+    <nav>
+      <ul>
+        <?php if (isset($_SESSION['admin'])){  ?>
+          <li><a id="href" href="adminPanel.php">Panel administratora</a></li>
+          <li><a id="href" href="logout.php">Wyloguj</a></li>
+        <?php }else if(isset($_SESSION['userID'])){ ?>
+          <li><a id="href" href="userPanel.php">Moje Rezerwacje</a></li>
+          <li><a id="href" href="logout.php">Wyloguj</a></li>
+        <?php }else{ ?>
+          <li><a id="href" href="login.html">Zaloguj</a></li>
+        <?php } ?> 
+      </ul>
+    </nav>
+  </header>
 
-<div id="preview-container">
-  <button id="upload-dialog">Choose Image</button>
-  <input type="file" id="image-file" accept="image/jpg,image/png" style="display:none" />
-  <img id="preview-image" style="display:none" />
-<div>
+  <section class="slider">
+    <img src="slider.jpg">
+  </section>
+  <h1>Przyczepy kempingowe na wynajem</h1>
+  <div class="grid">
 
-<form action="upload.php" method="post" enctype="multipart/form-data" target="uploadTarget" onsubmit="startUpload();" >
-  <p id="uploadProcess">Uploading...<br/><img src="assets/loader.gif" /><br/></p>
-  <p id="uploadForm" align="center"><br/>
-    <label>
-      File: <input name="myfile" type="file" size="30" />
-    </label>
-    <label>
-      <input type="submit" name="submitBtn" class="sbtn" value="Upload" />
-    </label>
-  </p>
-  <iframe id="uploadTarget" name="uploadTarget" src="#" style="width:0;height:0;border:0px solid #fff;"></iframe>
-</form>
-<!-- Uploaded file preview -->
-<div>
-  <embed id="UploadedFile" src="" width="390px" height="160px">
-</div>
+    <?php
+      for($i = 0;$i<count($caravanModels);$i++)
+      { ?>
+        <div class="caravan">
+          <?php 
+            $adres = $caravanModels[$i]->getPicture();
+            echo "<img src='images/caravans/$adres'/> ";
 
-    script src="upload.js"></script>
-<?php
+            echo "<h3>".$caravanModels[$i]->getProducer()." ".$caravanModels[$i]->getModel()."</h3>";
+            echo "<p class='price'>".$caravanModels[$i]->getPrice()." PLN/dzień</p>";
+            echo "<p>Długość : ".$caravanModels[$i]->getLength()."mm</p>";
 
-$zdjecie1 = "1.png";
-echo "<img src='$zdjecie1' width='100px' height='100px' alt='' /> ";
+            echo "<p>Liczba miejsc : ".$caravanModels[$i]->getPeople()."</p>";
+            echo "<p>masa : ".$caravanModels[$i]->getWeight()."kg</p>";
 
-//require_once("index.html");
-
-?>
+            $id =  $caravanModels[$i]->getModelID();
+            echo "<a id='href' href='caravanPage.php?id=$id'><button>Więcej</button></a>";
+        echo "</div>";
+      } ?>  
+  </div>
+  <link rel="stylesheet" href="css/styles.css">
+</body>
+</html>

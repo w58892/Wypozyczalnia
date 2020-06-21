@@ -1,15 +1,49 @@
 <?php
-echo '<?xml version="1.0" encoding="iso-8859-2"?>';
-?>
-<html>
-    <head>
-        <title>Upload plików w PHP</title>
-        <meta charset="utf-8">
-		<script src="upload.js"></script>
-    </head>
-    <body>
 
-    <h1>Dodaj przyczepę</h1>
+session_start();
+
+require_once("config.php");
+require_once("class/User.php");
+require_once("class/Worker.php");
+require_once("caravanList.php");
+
+if(isset($_SESSION['admin'])){
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel administratora</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+    <body>
+    <header>
+        <a id="href" href="index.php"><img src='images/logo.png'/></a>
+        <nav>
+            <a id="href" href="logout.php">Wyloguj</a>
+        </nav>
+    </header> 
+        <h1>Dodaj przyczepę</h1>
+
+    <section class="admin">   
+
+    <select id="caravan-list">
+        <option value="0">Wybierz model przyczepy</option>
+        <option value="new">Dodaj nowy model</option>
+        
+        <?php
+            for($i = 0;$i<count($caravanModels);$i++)
+            { 
+                $model = $caravanModels[$i]->getProducer()." ".$caravanModels[$i]->getModel();
+                $id = $caravanModels[$i]->getModelID();
+                echo "<option value='$id'>$model</option>";
+            } 
+        ?>  
+    </select>
+
     <label id="labelNumberPlate">
     <input type="text" id="numberPlate" placeholder="numberPlate">
         <div id="errorNumberPlate"></div>
@@ -79,19 +113,17 @@ echo '<?xml version="1.0" encoding="iso-8859-2"?>';
         <input type="text" id="fridge" placeholder="fridge">
         <div id="errorFridge"></div>
     </label>
-    <input type="button" id="btn_loguj" class="send" value="Zaloguj">
 
-    <form enctype="multipart/form-data" action="upload.php" method="post">
-        <input type="file" name="plik" id="plik">
-        <input type="button" value="Wyślij" onclick="wyslijPlik()">
-    </form>
-	<section>
-		<h3>Postęp wysyłania</h3>
-		<output id="status">Wybierz plik i naciśnij <i>Wyślij</i>.</output>
-		<progress value="0" max="100" id="postep"></progress>
-	</section>
+        <input type="file" name="file" id="file">
+        <input type="button" value="Dodaj" onclick="add()">
+</section>
     </body>
-</html>
+    <script src="upload.js"></script>
 
-</body>
 </html>
+<?php
+
+}else{
+    header("Location: index.php"); 
+}
+?>

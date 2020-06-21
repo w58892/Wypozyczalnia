@@ -1,0 +1,278 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    font-family: Arial;
+    font-weight: normal;
+}
+
+
+body{
+    margin:0 auto;
+    margin-top: 100px;
+    max-width: 1200px;
+    min-width: 1000px;
+}
+
+.slider img{
+    width: 1200px;
+}
+
+h1 {
+    margin:30px auto;
+    text-align: center;
+    justify-content: center;
+    font-size: 35px;
+    display: flex;
+}
+
+.error{
+    display: none;
+}
+
+header a{
+    text-decoration: none;
+    color:black;
+    margin-right:20px;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+    width: 100%;
+    max-width: 1200px;
+    margin:0 auto;
+
+    background: white;
+    text-align: center;
+    height: 100px;
+}
+
+header img{
+    width:80px;
+    align-items: right;
+
+}
+
+
+ nav ul {
+    width:300px;
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content:right;
+
+}
+
+ nav a {
+    font-size: 19px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+
+.grid {
+
+    display: flex;
+    flex-direction: row ;
+    flex-wrap:  wrap;
+    
+  }
+
+.caravan{
+    display: flex;
+    flex-direction: column ;
+    align-items: center;
+    text-align: center;
+    height:550px;
+    width:280px;
+    margin:5px;
+    border: 1px solid rgb(219, 217, 217);
+}
+
+.caravan img{
+    width:100%;
+}
+
+
+.caravan h3{
+    font-size: 20px;
+    margin:10px;
+}
+
+.caravan .price{
+    width:200px;
+    color:brown;
+    font-size: 30px;
+    border-bottom: 3px solid brown;
+}
+
+.caravan p{
+    width:160px;
+    height:30px;
+    margin:10px;
+    font-size: 18px;
+    border-bottom: 1px solid rgb(219, 217, 217);
+}
+
+.caravan a button{
+    width:100px;
+    height:30px;
+    cursor: pointer;
+    background-color: brown;
+    border: none;
+    color: white;
+}
+
+.login{
+    display: flex;
+
+}
+
+.login form{
+    display: flex;
+    flex-direction: column ;
+    align-items: center;
+
+    width:50%;
+
+}
+
+.login form input{
+    width:300px;
+    height: 40px;
+    margin:15px;
+    font-size: large;
+    
+}
+
+#btn_loguj,#btn_reg{
+    background-color: brown;
+    color:white;
+    border: none;
+
+}
+
+.admin{
+    display: flex;
+    flex-direction: row ;
+    flex-wrap:  wrap;
+
+}
+
+
+.specyfication{
+width: 400px;
+font-size: 20px;
+border-spacing: 0;
+float:left;
+
+}
+
+.specyfication td{
+    height: 40px;
+}
+
+.specyfication td:nth-of-type(2){
+
+    align-items: right;
+    text-align: right;
+
+}
+
+.specyfication tr:nth-of-type(2n){
+width: 50%;
+background-color:rgb(228, 224, 224) ;
+
+}
+
+.caravanIMG{
+    width: 600px;
+    float:right;
+
+
+}
+
+.reservation{
+    margin-top:30px;
+    float:right;
+    display: flex;
+    flex-direction: row;
+    font-size: large;
+    align-items: center;
+}
+
+.reservation input{
+    width:120px;
+    height: 40px;
+    margin:0 15px;
+    font-size: large;
+
+}
+
+.reservation label{
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+}
+.reservation p{
+    margin-right: 15px;
+    color:brown;
+    font-size: 20px;
+}
+
+#addReservation{
+    background-color: brown;
+    color:white;
+    border: none;
+}
+
+
+.ReservationList {
+    font-size: larger;
+    border-collapse: collapse; 
+        width: 1000px;
+    margin: 0 auto;
+}
+
+.ReservationList td:first-of-type{
+    border-left: 1px solid brown;
+}
+
+.ReservationList td:last-of-type{
+    border-right: 1px solid brown;
+}
+
+.ReservationList td{
+    padding:20px;
+    border-bottom: 1px solid brown;
+    border-top: 1px solid brown;
+}
+
+.ReservationList button{
+    width:50px;
+    height: 40px;
+    background-color: brown;
+    color:white;
+    border: none;
+}
+
+.admin{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.admin input,select{
+    width: 200px;
+    height: 40px;
+    margin:10px;
+}
+
+#producer,#model,#price,#weight,#length,#lengthInside,#width,#widthInside,#people,#water,#hotWater,#shower,#fridge,#file{
+    display: none;
+}
