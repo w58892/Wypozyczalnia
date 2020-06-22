@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Wypozyczalnia przyczep</title>
     <link rel="stylesheet" href="css/styles.css">
 
 </head>
@@ -28,10 +28,9 @@ require_once("class/Reservation.php");
 require("caravanList.php");
 
 if(isset($_SESSION['userID'])){
-$userID = 1;
     global $db;
     $stmt = $db->prepare('SELECT * FROM reservations WHERE userID=:userID');
-    $stmt->bindValue(':userID', $userID, PDO::PARAM_INT);       
+    $stmt->bindValue(':userID', $_SESSION['userID'], PDO::PARAM_INT);       
     $stmt->execute();
 
     
@@ -55,7 +54,7 @@ $userID = 1;
                                     <td>Model : <?php echo $caravanModels[$k]->getModel();?></td>
                                     <td>Początek : <?php echo $reservations[$i]->getBegin();?></td>
                                     <td>Koniec : <?php echo $reservations[$i]->getEnd();?></td>
-                                    <td><button onclick="remove(<?php echo $reservations[$i]->gerReservationID; ?>)">USUŃ</button></td>
+                                    <td><button onclick='remove(<?php echo $reservations[$i]->getReservationID(); ?>)'>USUŃ</button></td>
                                 </tr>
                            
                             <?php
@@ -68,16 +67,13 @@ $userID = 1;
         }
         echo " </table>";
     } else
-        return(json_encode("brak rezerwacji"));
-
-
-                                   // <td><input type="button" onclick="remove(<?php echo $reservations[$i] </td>)"> </td>
-
-                                    //<td><input type="button" onclick="remove(<?php echo $reservations[$i] </td>)"> </td>
+        return('{"reservations":"none"}');
 
 }
 else
     header("Location: index.php"); 
 ?>
-</head>
+</body>
+<script type="text/javascript" src="js/removeReservation.js"></script>
+
 </html>

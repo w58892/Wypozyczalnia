@@ -7,10 +7,7 @@ class Client extends User
     global $db;
 
     if($begin>$end)
-    {
-      $response['date'] = "wrong";
-      return $response;
-    }
+      return '{"date":"wrong"}';
     
     $sth = $db->prepare('SELECT caravans.* FROM caravans LEFT JOIN (SELECT caravans.caravanID FROM caravans INNER JOIN reservations ON 
       reservations.caravanID = caravans.caravanID WHERE caravans.modelID=:modelID AND reservations.end > :begin
@@ -25,20 +22,18 @@ class Client extends User
       foreach ($sth as $row) {
         $caravanID = $row['caravanID'];
       };
-      $userID=1;
           
       $sth = $db->prepare('INSERT INTO reservations (begin, end, userID, caravanID) VALUE (:begin,:end,:userID,:caravanID)');
       $sth->bindValue(':begin', $begin, PDO::PARAM_STR);
       $sth->bindValue(':end', $end, PDO::PARAM_STR);
-      $sth->bindValue(':userID', $userID, PDO::PARAM_INT);        
+      $sth->bindValue(':userID', $_SESSION['userID'], PDO::PARAM_INT);        
       $sth->bindValue(':caravanID', $caravanID, PDO::PARAM_INT);
       $res = $sth->execute();
     
       if ($res == true) 
-        $response['success'] = "true";
-      return $response;
+        return '{"success":"true"}';
     }else
-      return "Ten model nie jest dostępny w danym zakresie czasowym";
+        return '{"available":"false"}';
   }
     
   public function modifyReservation($begin,$end,$caravanID,$reservationID){
@@ -50,19 +45,22 @@ class Client extends User
     $sth->bindValue(':reservationID', $reservationID, PDO::PARAM_INT);
     $mod = $sth->execute();
     if($mod == true)
-      return "success";
+      return '{"success":"true"}';
     else
-      return "fail";
+      return '{"success":"fail"}';
   }
     
   public function deleteReservation($reservationID){
+    
     global $db;
+    
     $sth = $db->prepare('DELETE FROM reservations WHERE reservationID=:reservationID');
     $sth->bindValue(':reservationID', $reservationID, PDO::PARAM_INT);
     $del = $sth->execute();
+    
     if($del == true)
-      return "success";
+    die ('{"success":"true"}');
     else
-      return "fail";
+      return '{"success":"fail"}';
   }
 }

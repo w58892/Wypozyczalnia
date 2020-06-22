@@ -37,9 +37,6 @@ for($i = 0;$i<count($caravanModels);$i++)
  echo "<h1>".$caravanModels[$id]->getProducer()." ".$caravanModels[$id]->getModel()."</h1>";
 ?>
 
-
-
-
 <table class="specyfication">
 
 <tr> 
@@ -121,18 +118,18 @@ for($i = 0;$i<count($caravanModels);$i++)
 
 <section class="reservation">
             <p><?php echo $caravanModels[$id]->getPrice();?>PLN/dzień</p>
-          <label>Początek<input type="date" id="begin" name="begin"> </label>
+          <label>Początek<input type="date" id="begin" name="begin">
+          <div class = "error" id="errorBegin"></div>
+         </label>
         
 
-        <label>Koniec <input type="date" id="name" name="end"> </label>
+        <label>Koniec <input type="date" id="end" name="end">
+        <div class = "error" id="errorEnd"></div>
+         </label>
         <input type="button" id="addReservation" value="Rezerwuj">  
-
-
 </section>
 
 </body>
-
-<!--<script type="text/javascript" src="JS/skrypt.js"></script>-->
-<script type="text/javascript" src="res.js"></script>
+<script type="text/javascript" src="js/res.js"></script>
 
 </html>

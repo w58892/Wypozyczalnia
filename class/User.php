@@ -11,9 +11,12 @@ class User
   public function login($email, $password ){
     $response = [];
 
-    if ($email == "")
+    if ($email == "") {
       $response['email'] = "empty";
-
+    } else
+      if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+      $response['email'] = "notEmail";
+    }
     if ($password  == "")
       $response['password'] = "empty";
 
@@ -53,9 +56,7 @@ class User
     if ($email == "") {
       $response['email'] = "empty";
     } else
-      if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
-      $email = $email;
-    } else {
+      if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
       $response['email'] = "wrong";
     }
         

@@ -2,8 +2,17 @@
 require_once("config.php");
 require_once("class/User.php");
 require_once("class/Client.php");
-
+session_start();
 $client = new Client;
-die(json_encode($client->addReservation($_POST['modelID'],$_POST['begin'],$_POST['end'])));
+
+
+if(isset($_POST['begin'])){
+
+die($client->addReservation(trim($_POST['modelID']),trim($_POST['begin']),trim($_POST['end'])));
+}
+else{
+
+die($client->deleteReservation(trim($_POST['reservationID'])));
+}
 
 ?>

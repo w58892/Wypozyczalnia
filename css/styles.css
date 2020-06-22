@@ -27,7 +27,9 @@ h1 {
 }
 
 .error{
-    display: none;
+    margin-top:-10px;
+    color:red;
+    font-size: large;
 }
 
 header a{
@@ -46,7 +48,6 @@ header {
     width: 100%;
     max-width: 1200px;
     margin:0 auto;
-
     background: white;
     text-align: center;
     height: 100px;
@@ -55,17 +56,15 @@ header {
 header img{
     width:80px;
     align-items: right;
-
 }
 
-
- nav ul {
+nav ul {
     width:300px;
     list-style: none;
     padding: 0;
     display: flex;
+    align-items: right;
     justify-content:right;
-
 }
 
  nav a {
@@ -76,12 +75,10 @@ header img{
 
 
 .grid {
-
     display: flex;
     flex-direction: row ;
     flex-wrap:  wrap;
-    
-  }
+}
 
 .caravan{
     display: flex;
@@ -130,16 +127,13 @@ header img{
 
 .login{
     display: flex;
-
 }
 
 .login form{
     display: flex;
     flex-direction: column ;
     align-items: center;
-
     width:50%;
-
 }
 
 .login form input{
@@ -147,30 +141,33 @@ header img{
     height: 40px;
     margin:15px;
     font-size: large;
-    
+}
+
+.login form label{
+    text-align: center;
 }
 
 #btn_loguj,#btn_reg{
     background-color: brown;
     color:white;
     border: none;
-
 }
 
 .admin{
     display: flex;
     flex-direction: row ;
     flex-wrap:  wrap;
-
 }
 
+.admin label{
+    text-align: center;
+}
 
 .specyfication{
-width: 400px;
-font-size: 20px;
-border-spacing: 0;
-float:left;
-
+    width: 400px;
+    font-size: 20px;
+    border-spacing: 0;
+    float:left;
 }
 
 .specyfication td{
@@ -178,23 +175,18 @@ float:left;
 }
 
 .specyfication td:nth-of-type(2){
-
     align-items: right;
     text-align: right;
-
 }
 
 .specyfication tr:nth-of-type(2n){
-width: 50%;
-background-color:rgb(228, 224, 224) ;
-
+    width: 50%;
+    background-color:rgb(228, 224, 224) ;
 }
 
 .caravanIMG{
     width: 600px;
     float:right;
-
-
 }
 
 .reservation{
@@ -211,7 +203,6 @@ background-color:rgb(228, 224, 224) ;
     height: 40px;
     margin:0 15px;
     font-size: large;
-
 }
 
 .reservation label{
@@ -231,11 +222,10 @@ background-color:rgb(228, 224, 224) ;
     border: none;
 }
 
-
 .ReservationList {
     font-size: larger;
     border-collapse: collapse; 
-        width: 1000px;
+    width: 1000px;
     margin: 0 auto;
 }
 
@@ -273,6 +263,77 @@ background-color:rgb(228, 224, 224) ;
     margin:10px;
 }
 
-#producer,#model,#price,#weight,#length,#lengthInside,#width,#widthInside,#people,#water,#hotWater,#shower,#fridge,#file{
+#producer,#model,#price,#weight,#length,#lengthInside,#width,#widthInside,#people,#water,#hotWater,#shower,#fridge,#checkbox{
+    display: none;
+}
+
+#checkbox{
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+#checkbox label{
+    align-items: left;
+}
+
+#checkbox label input{
+    width:10px;
+    height:10px;
+    margin:3px;
+    margin-left:10px;
+}
+
+#fileLabel{ 
+
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+
+    display: none;
+
+    background-color: brown;
+    color: white;
+    width: 200px;
+    cursor: pointer;
+    font-size: 18px;;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+   
+#divFile{
+    display: none;
+    flex-direction: column;
+    margin-top: 10px;
+    margin-left: 50px;
+    color: white;
+    height: 60px;
+    width: 200px;
+    cursor: pointer;
+    font-size: 18px;;
+    align-items: center;
+ 
+    margin-bottom:30px;
+
+}
+
+#errorFile{
+    width: 100px;;
+    color:red;
+    font-size: large;
+
+}
+
+
+#btnAdd{
+    background-color: brown;
+    border: none;
+    color:white;
+    cursor: pointer;
+    font-size: 18px;;
+}
+    
+input[type="file"] {
     display: none;
 }

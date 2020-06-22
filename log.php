@@ -22,7 +22,6 @@ require_once("caravanList.php");
     <title>Wypożyczalnia przyczep kempingowych</title>
 
     <link rel="stylesheet" href="css/styles.css">
-    <script type="text/javascript" src="main.js"></script>
 
 </head>
 
@@ -36,11 +35,11 @@ require_once("caravanList.php");
     <h1>Logowanie</h1>
     <label id="labelEmail">
         <input type="text" id="email" placeholder="Email">
-        <div id="errorEmail"></div>
+        <div class="error" id="errorEmail"></div>
     </label>
     <label id="labelPassword">
         <input type="password" id="password" placeholder="Hasło">
-        <div id="errorPassword"></div>
+        <div class="error" id="errorPassword"></div>
     </label>
     <input type="button" id="btn_loguj" class="send" value="Zaloguj">
 </form>
@@ -49,15 +48,15 @@ require_once("caravanList.php");
     <h1>Rejestracja</h1>
     <label id="labelEmail">
         <input type="text" id="emailReg" placeholder="Email">
-        <div id="errorEmailReg"></div>
+        <div class="error" id="errorEmailReg"></div>
     </label>
     <label id="labelPassword">
         <input type="password" id="passwordReg" placeholder="Hasło">
-        <div id="errorPasswordReg"></div>
+        <div class="error" id="errorPasswordReg"></div>
     </label>
     <label id="labelPassword2">
         <input type="password" id="passwordReg2" placeholder="Hasło">
-        <div id="errorPasswordReg2"></div>
+        <div class="error" id="errorPasswordReg2"></div>
     </label>
     <input type="button" id="btn_reg" class="send" value="Załóż konto">
 </form>
@@ -67,7 +66,7 @@ require_once("caravanList.php");
 </body>
 
 <!--<script type="text/javascript" src="JS/skrypt.js"></script>-->
-    <script type="text/javascript" src="menu.js"></script>
+    <script type="text/javascript" src="js/menu.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css" />
 
 </html>

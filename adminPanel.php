@@ -29,7 +29,7 @@ if(isset($_SESSION['admin'])){
         <h1>Dodaj przyczepę</h1>
 
     <section class="admin">   
-
+    <label>
     <select id="caravan-list">
         <option value="0">Wybierz model przyczepy</option>
         <option value="new">Dodaj nowy model</option>
@@ -42,83 +42,81 @@ if(isset($_SESSION['admin'])){
                 echo "<option value='$id'>$model</option>";
             } 
         ?>  
+        
     </select>
-
+    <div class = "error" id="errorModelID"></div>
+        </label>
     <label id="labelNumberPlate">
-    <input type="text" id="numberPlate" placeholder="numberPlate">
-        <div id="errorNumberPlate"></div>
+    <input type="text" id="numberPlate" placeholder="Numer rejestracyjny">
+        <div class = "error" id="errorNumberPlate"></div>
     </label>
 
     <label id="labelProducer">
-        <input type="text" id="producer" placeholder="producer">
-        <div id="errorProducer"></div>
+        <input type="text" id="producer" placeholder="Producent">
+        <div class = "error" id="errorProducer"></div>
     </label>
 
     <label id="labelModel">
-        <input type="text" id="model" placeholder="model">
-        <div id="errorModel"></div>
+        <input type="text" id="model" placeholder="Model">
+        <div class = "error" id="errorModel"></div>
     </label>
 
     <label id="labelPrice">
-        <input type="text" id="price" placeholder="price">
-        <div id="errorPrice"></div>
+        <input type="text" id="price" placeholder="Cena">
+        <div class = "error" id="errorPrice"></div>
     </label>
 
     <label id="labelWieght">
-        <input type="text" id="weight" placeholder="weight">
-        <div id="errorWeight"></div>
+        <input type="text" id="weight" placeholder="Waga">
+        <div class = "error" id="errorWeight"></div>
     </label>
 
     <label id="labelLength">
-        <input type="text" id="length" placeholder="length">
-        <div id="errorLength"></div>
+        <input type="text" id="length" placeholder="Długość całkowita">
+        <div class = "error" id="errorLength"></div>
     </label>
 
     <label id="labelLengthInside">
-        <input type="text" id="lengthInside" placeholder="lengthInside">
-        <div id="errorLengthInsider"></div>
+        <input type="text" id="lengthInside" placeholder="Długość wnętrza">
+        <div class = "error" id="errorLengthInside"></div>
     </label>
 
     <label id="labelWidth">
-        <input type="text" id="width" placeholder="width">
-        <div id="errorWidth"></div>
+        <input type="text" id="width" placeholder="Szerokość">
+        <div class = "error" id="errorWidth"></div>
     </label>
 
-    <label id="widthInside">
-        <input type="text" id="widthInside" placeholder="widthInside">
-        <div id="errorWidthInside"></div>
+    <label id="labelInside">
+        <input type="text" id="widthInside" placeholder="Szerokość wnętrza">
+        <div class = "error" id="errorWidthInside"></div>
     </label>
 
     <label id="labelPeople">
-        <input type="text" id="people" placeholder="people">
-        <div id="errorPeople"></div>
+        <input type="text" id="people" placeholder="Ilość miejsc">
+        <div class = "error" id="errorPeople"></div>
     </label>
 
     <label id="labelWater">
-        <input type="text" id="water" placeholder="water">
-        <div id="errorWater"></div>
+        <input type="text" id="water" placeholder="Woda">
+        <div class = "error" id="errorWater"></div>
     </label>
 
-    <label id="labelHotWater">
-        <input type="text" id="hotWater" placeholder="hotWater">
-        <div id="errorHotWater"></div>
-    </label>
-
-    <label id="labelShower">
-        <input type="text" id="shower" placeholder="shower">
-        <div id="errorShower"></div>
-    </label>
-
-    <label id="labelFridge">
-        <input type="text" id="fridge" placeholder="fridge">
-        <div id="errorFridge"></div>
-    </label>
-
-        <input type="file" name="file" id="file">
-        <input type="button" value="Dodaj" onclick="add()">
+    <div id="checkbox" >
+        <label><input type="checkbox" id="checkHotWater" name="hotWater" value="1">Ciepła woda</label>
+        <label><input type="checkbox" id="checkShower" name="shower" value="1">Prysznic</label>
+        <label><input type="checkbox" id="checkFridge" name="fridge" value="1">Lodówka</label>
+    </div>
+    <div id="divFile">
+    <label id="fileLabel">Dołącz zdjęcie
+        <input type="file" name="file" id="file" size="60">
+     </label>   
+    <div id="errorFile"></div>
+</div>
+    
+        <input id="btnAdd" type="button" value="Dodaj">
 </section>
     </body>
-    <script src="upload.js"></script>
+    <script src="js/upload.js"></script>
 
 </html>
 <?php

@@ -21,14 +21,14 @@ require_once("caravanList.php");
           <li><a id="href" href="userPanel.php">Moje Rezerwacje</a></li>
           <li><a id="href" href="logout.php">Wyloguj</a></li>
         <?php }else{ ?>
-          <li><a id="href" href="login.html">Zaloguj</a></li>
+          <li><a id="href" href="log.php">Zaloguj</a></li>
         <?php } ?> 
       </ul>
     </nav>
   </header>
 
   <section class="slider">
-    <img src="slider.jpg">
+    <img src="images/slider.jpg">
   </section>
   <h1>Przyczepy kempingowe na wynajem</h1>
   <div class="grid">

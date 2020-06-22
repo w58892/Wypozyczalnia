@@ -1,6 +1,8 @@
 <?php
 require_once("config.php");
 require_once("class/Caravan.php");
+require_once("class/CaravanModel.php");
+
 
 $stmt = $db->prepare('SELECT * FROM caravans ');
 $stmt->execute();
