@@ -168,7 +168,6 @@ document.getElementById('btnAdd').addEventListener("click",function(){
             return resp.json();
         })
         .then((response) => {
-            console.log(response);
             errorNumberPlate = document.getElementById("errorNumberPlate");
             errorNumberPlate.innerHTML = "";
 
@@ -260,7 +259,7 @@ document.getElementById('btnAdd').addEventListener("click",function(){
                     errorFile.innerHTML = "duży rozmiar pliku";
                 }
                 
-                if(response.sucsess == "true")
+                if(response.success == "true")
                 alert("Dodano nowy model przyczepy");
 
         }) 
@@ -278,7 +277,6 @@ document.getElementById('btnAdd').addEventListener("click",function(){
             return resp.json();
         })
         .then((response) => {
-
             errorNumberPlate = document.getElementById("errorNumberPlate");
             errorNumberPlate.innerHTML = "";
 
@@ -291,7 +289,7 @@ document.getElementById('btnAdd').addEventListener("click",function(){
             }
             else if(response.numberPlate == "length")
             {
-                errorNumberPlate.innerHTML = "numer ma mieć 7 mznaków";
+                errorNumberPlate.innerHTML = "numer ma mieć 7 znaków";
             }
             else if (response.caravan == "exist")
             {
@@ -301,7 +299,7 @@ document.getElementById('btnAdd').addEventListener("click",function(){
             if (response.modelID == "empty")
             errorModelID.innerHTML = "Wybierz model";
             
-            if(response.sucsess == "true")
+            if(response.success == "true")
             alert("Dodano przyczepę");
         }) 
         .catch(error => {

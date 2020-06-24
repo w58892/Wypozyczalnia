@@ -1,7 +1,15 @@
 <?php
 
+/**
+ * Zawiera metody do których dostęp mają jedynie zalogowani użytkownicy
+ */
+
 class Client extends User
 {
+
+  /**
+   * Użytkownik tworzy rezerwację przyczepy w wybranym terminie
+   */
   public function addReservation($modelID,$begin,$end){
 
     global $db;
@@ -50,6 +58,9 @@ class Client extends User
       return '{"success":"fail"}';
   }
     
+  /**
+   * Użytkownik usuwa rezerwację
+   */
   public function deleteReservation($reservationID){
     
     global $db;

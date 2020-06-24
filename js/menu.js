@@ -25,9 +25,11 @@ function login() {
         body: 'login&email=' + email + '&password=' + password
     })
         .then((resp) => {
+            
             return resp.json();
         })
         .then((response) => {
+
             errorPassword = document.getElementById("errorPassword");
             errorPassword.innerHTML = "";
             errorEmail = document.getElementById("errorEmail");
@@ -63,13 +65,10 @@ function register(email,password,password2) {
         body: 'email=' + email + '&password=' + password + '&password2=' + password2
     })
         .then((resp) => {
-            console.log(resp);
-
-            return resp.json();
-            
+            return resp.json(); 
         })
         .then((response) => {
-            console.log(response);
+
             errorEmail = document.getElementById("errorEmailReg");
             errorEmail.innerHTML = '';
             errorPassword = document.getElementById("errorPasswordReg");

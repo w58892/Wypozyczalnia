@@ -1,7 +1,4 @@
 function remove(id){
-
-console.log(id);
-
     fetch('reser.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },

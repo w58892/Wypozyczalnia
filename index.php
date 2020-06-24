@@ -13,17 +13,15 @@ require_once("caravanList.php");
   <header>
   <a id="href" href="index.php"><img src='images/logo.png'/></a>
     <nav>
-      <ul>
         <?php if (isset($_SESSION['admin'])){  ?>
-          <li><a id="href" href="adminPanel.php">Panel administratora</a></li>
-          <li><a id="href" href="logout.php">Wyloguj</a></li>
+          <a id="href" href="adminPanel.php">Panel administratora</a>
+          <a id="href" href="logout.php">Wyloguj</a>
         <?php }else if(isset($_SESSION['userID'])){ ?>
-          <li><a id="href" href="userPanel.php">Moje Rezerwacje</a></li>
-          <li><a id="href" href="logout.php">Wyloguj</a></li>
+          <a id="href" href="userPanel.php">Moje Rezerwacje</a>
+          <a id="href" href="logout.php">Wyloguj</a>
         <?php }else{ ?>
-          <li><a id="href" href="log.php">Zaloguj</a></li>
+          <a id="href" href="log.php">Zaloguj</a>
         <?php } ?> 
-      </ul>
     </nav>
   </header>
 

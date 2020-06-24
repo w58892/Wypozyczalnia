@@ -12,16 +12,23 @@
     
     <a id="href" href="index.php"><img src='images/logo.png'/></a>
     <nav>
+    <?php
+    session_start();
+
+    if(isset($_SESSION['userID']))
+    {?>
         <a id="href" href="userPanel.php">Moje Rezerwacje</a>
         <a id="href" href="logout.php">Wyloguj</a>
+    <?php
+    }else{ ?>
+        <a id="href" href="log.php">Zaloguj</a>
+    <?php } ?>
     </nav>
 </header>
 
 <?php
-session_start();
 
-if(!isset($_SESSION['userID']))
-header("Location: index.php"); 
+
 
 require_once("caravanList.php");
 

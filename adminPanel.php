@@ -7,6 +7,10 @@ require_once("class/User.php");
 require_once("class/Worker.php");
 require_once("caravanList.php");
 
+
+  /**
+   * Panel administratora
+   */
 if(isset($_SESSION['admin'])){
 
 ?>
@@ -115,6 +119,9 @@ if(isset($_SESSION['admin'])){
     
         <input id="btnAdd" type="button" value="Dodaj">
 </section>
+
+
+
     </body>
     <script src="js/upload.js"></script>
 

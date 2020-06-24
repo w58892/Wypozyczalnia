@@ -11,11 +11,11 @@ body{
     margin:0 auto;
     margin-top: 100px;
     max-width: 1200px;
-    min-width: 1000px;
+    min-width: 400px;
 }
 
 .slider img{
-    width: 1200px;
+    width: 100%;
 }
 
 h1 {
@@ -58,14 +58,12 @@ header img{
     align-items: right;
 }
 
-nav ul {
-    width:300px;
-    list-style: none;
-    padding: 0;
-    display: flex;
-    align-items: right;
-    justify-content:right;
+nav{
+
+    text-align: right;
 }
+
+
 
  nav a {
     font-size: 19px;
@@ -78,6 +76,8 @@ nav ul {
     display: flex;
     flex-direction: row ;
     flex-wrap:  wrap;
+    align-items: center; 
+    justify-content: center;
 }
 
 .caravan{
@@ -157,6 +157,8 @@ nav ul {
     display: flex;
     flex-direction: row ;
     flex-wrap:  wrap;
+    justify-content: center;
+    flex-direction: column;
 }
 
 .admin label{
@@ -225,7 +227,8 @@ nav ul {
 .ReservationList {
     font-size: larger;
     border-collapse: collapse; 
-    width: 1000px;
+    width: 100%;
+    
     margin: 0 auto;
 }
 
@@ -238,7 +241,7 @@ nav ul {
 }
 
 .ReservationList td{
-    padding:20px;
+    padding:20px 5px;
     border-bottom: 1px solid brown;
     border-top: 1px solid brown;
 }
@@ -257,9 +260,15 @@ nav ul {
     flex-direction: row;
 }
 
-.admin input,select{
+.admin input{
     width: 200px;
     height: 40px;
+    margin:10px;
+}
+
+select{
+    width: 202px;
+    height: 42px;
     margin:10px;
 }
 
@@ -271,6 +280,7 @@ nav ul {
     display: none;
     flex-direction: column;
     align-items: flex-start;
+    margin-right: 50px;
 }
 
 #checkbox label{
@@ -288,13 +298,13 @@ nav ul {
 
     align-items: center;
     justify-content: center;
-    height: 40px;
+    height: 42px;
 
     display: none;
 
     background-color: brown;
     color: white;
-    width: 200px;
+    width: 202px;
     cursor: pointer;
     font-size: 18px;;
     align-items: center;
@@ -306,20 +316,19 @@ nav ul {
     display: none;
     flex-direction: column;
     margin-top: 10px;
-    margin-left: 50px;
+    margin-left: 10px;
+    margin-right: 12px;
     color: white;
     height: 60px;
     width: 200px;
     cursor: pointer;
     font-size: 18px;;
     align-items: center;
- 
     margin-bottom:30px;
-
 }
 
 #errorFile{
-    width: 100px;;
+    width: 100px;
     color:red;
     font-size: large;
 
@@ -329,11 +338,62 @@ nav ul {
 #btnAdd{
     background-color: brown;
     border: none;
+    width: 202px;
+    height: 42px;
     color:white;
     cursor: pointer;
-    font-size: 18px;;
+    font-size: 18px;
 }
     
 input[type="file"] {
     display: none;
+}
+
+
+@media (max-width:800px)
+{
+    .login{
+        align-items: center; 
+        justify-content: center;
+        flex-direction: column;
+    }
+ 
+}
+
+@media  (max-width:1110px)
+{
+    #checkbox{
+width: 175px;
+    }
+    
+}
+
+@media (max-width:600px)
+{
+
+    .ReservationList td:first-of-type{
+        border-left: none;
+    }
+    
+    .ReservationList td:last-of-type{
+        border-right: none;
+    }
+
+    .ReservationList td{
+        display: flex;
+        flex-direction: column;
+                align-items: center; 
+        justify-content: center;
+        border:none;
+        padding:5px;
+
+    }
+
+    .ReservationList tr{
+        border:2px solid brown;
+                padding-bottom:300px;
+
+    }
+
+
 }

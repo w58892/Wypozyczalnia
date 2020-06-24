@@ -51,6 +51,9 @@ document.getElementById("addReservation").addEventListener("click",
             if (response.success == 'true')
                 alert("Dodano rezerwację");
 
+            if (response.login == 'false')
+                window.location="log.php";
+
             if (response.available == 'false')
                 alert("Przyczepa niedostępna w wyznaczonym terminie");
         })

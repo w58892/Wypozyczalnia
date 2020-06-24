@@ -1,7 +1,15 @@
 <?php
 
+  /**
+   * Zawiera metody dla Pracowników
+   */
+
 class Worker extends User
 {
+
+    /**
+   * Rejestruje nową przyczepę 
+   */
   public function addCaravan($numberPlate,$modelID){
     global $db;
 
@@ -34,6 +42,10 @@ class Worker extends User
     else
       die('{"success":"false"}');    
   }
+
+    /**
+   * Dodaje do bazy nowy model przyczepy
+   */
 
   public function addCaravanModel($producer,$model,$price,$weight,$length,$lengthInside,$width,$widthInside,$people,$water,$hotwater,$shower,$fridge,$picture){
 

@@ -1,13 +1,18 @@
 <?php 
 
+  /**
+   * Zawiera metody dla nie zalogowanych użytkowników
+   */
+
 class User
 {
   private $userID;
   private $email;
-  private $firstName;
-  private $lastName;
-  private $phone;
 
+
+    /**
+   * Weryfikuje dane logowania i loguje użytkownika
+   */
   public function login($email, $password ){
     $response = [];
 
@@ -50,6 +55,9 @@ class User
     }
   }
 
+    /**
+   * Tworzy nowego użytkownika
+   */
   public function register($email, $password, $password2){
     $response = [];
         
@@ -102,13 +110,9 @@ class User
     }
   }
 
-  public function getID(){
-    return $this->userID;
-  }
-
-  public function getEmail(){
-    return $this->email;
-  }
+  /**
+   * Wylogowywuje użytkownika
+   */
 
   public function logout(){
     unset($_SESSION['userID']);
