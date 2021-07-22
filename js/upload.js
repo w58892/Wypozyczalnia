@@ -3,8 +3,8 @@ function disable(){
     errorNumberPlate = document.getElementById("errorNumberPlate");
     errorNumberPlate.innerHTML = "";
 
-    errorProducer= document.getElementById("errorProducer");
-    errorProducer.innerHTML = "";
+    //errorProducer= document.getElementById("errorProducer");
+    //errorProducer.innerHTML = "";
 
     errorModel= document.getElementById("errorModel");
     errorModel.innerHTML = "";

@@ -1,5 +1,6 @@
 <?php 
 require_once("CaravanModel.php");
+//require_once("../config.php");
 
 /**
  * Zawiera informacje o danej przyczepie

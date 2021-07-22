@@ -29,24 +29,57 @@ require_once("caravanList.php");
     <img src="images/slider.jpg">
   </section>
   <h1>Przyczepy kempingowe na wynajem</h1>
+  <h2>Hobby</h2>
   <div class="grid">
 
     <?php
-      for($i = 0;$i<count($caravanModels);$i++)
+
+    $hobby = new CaravanModelFactory();
+    $hobby = $hobby->MakeCar("Hobby");
+    $hobby =  $hobby->GetCaravans();
+      for($i = 0;$i<count($hobby);$i++)
       { ?>
         <div class="caravan">
           <?php 
-            $adres = $caravanModels[$i]->getPicture();
+            $adres = $hobby[$i]->getPicture();
             echo "<img src='images/caravans/$adres'/> ";
 
-            echo "<h3>".$caravanModels[$i]->getProducer()." ".$caravanModels[$i]->getModel()."</h3>";
-            echo "<p class='price'>".$caravanModels[$i]->getPrice()." PLN/dzień</p>";
-            echo "<p>Długość : ".$caravanModels[$i]->getLength()."mm</p>";
+            echo "<h3>".$hobby[$i]->getProducer()." ".$hobby[$i]->getModel()."</h3>";
+            echo "<p class='price'>".$hobby[$i]->getPrice()." PLN/dzień</p>";
+            echo "<p>Długość : ".$hobby[$i]->getLength()."mm</p>";
 
-            echo "<p>Liczba miejsc : ".$caravanModels[$i]->getPeople()."</p>";
-            echo "<p>masa : ".$caravanModels[$i]->getWeight()."kg</p>";
+            echo "<p>Liczba miejsc : ".$hobby[$i]->getPeople()."</p>";
+            echo "<p>masa : ".$hobby[$i]->getWeight()."kg</p>";
 
-            $id =  $caravanModels[$i]->getModelID();
+            $id =  $hobby[$i]->getModelID();
+            echo "<a id='href' href='caravanPage.php?id=$id'><button>Więcej</button></a>";
+        echo "</div>";
+      } ?>  
+  </div>
+
+  <h2>Buersnter</h2>
+  <div class="grid">
+
+    <?php
+
+    $buersnter = new CaravanModelFactory();
+    $buersnter = $buersnter->MakeCar("Buersnter");
+    $buersnter =  $buersnter->GetCaravans();
+      for($i = 0;$i<count($buersnter);$i++)
+      { ?>
+        <div class="caravan">
+          <?php 
+            $adres = $buersnter[$i]->getPicture();
+            echo "<img src='images/caravans/$adres'/> ";
+
+            echo "<h3>".$buersnter[$i]->getProducer()." ".$buersnter[$i]->getModel()."</h3>";
+            echo "<p class='price'>".$buersnter[$i]->getPrice()." PLN/dzień</p>";
+            echo "<p>Długość : ".$buersnter[$i]->getLength()."mm</p>";
+
+            echo "<p>Liczba miejsc : ".$buersnter[$i]->getPeople()."</p>";
+            echo "<p>masa : ".$buersnter[$i]->getWeight()."kg</p>";
+
+            $id =  $buersnter[$i]->getModelID();
             echo "<a id='href' href='caravanPage.php?id=$id'><button>Więcej</button></a>";
         echo "</div>";
       } ?>  
