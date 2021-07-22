@@ -11,7 +11,7 @@ class Worker extends User
    * Rejestruje nową przyczepę 
    */
   public function addCaravan($numberPlate,$modelID){
-    global $db;
+   //$db = Singleton::getInstance();
 
     if($numberPlate=="")
       die('{"numberPlate":"empty"}');
@@ -22,7 +22,7 @@ class Worker extends User
       die('{"modelID":"empty"}');
 
     
-    $sth = $db->prepare('SELECT * FROM caravans WHERE numberPlate=:numberPlate limit 1');
+    $sth = $db->query('SELECT * FROM caravans WHERE numberPlate=:numberPlate limit 1');
     $sth->bindValue(':numberPlate', $numberPlate, PDO::PARAM_STR);
     $sth->execute();
     $caravan = $sth->fetch(PDO::FETCH_ASSOC);
@@ -31,7 +31,7 @@ class Worker extends User
      
 
 
-    $sth = $db->prepare('INSERT INTO caravans VALUE (NULL,:numberPlate,:modelID)');
+    $sth = $db->query('INSERT INTO caravans VALUE (NULL,:numberPlate,:modelID)');
     $sth->bindValue(':numberPlate', $numberPlate, PDO::PARAM_STR);
     $sth->bindValue(':modelID', $modelID, PDO::PARAM_INT);
 
@@ -116,7 +116,7 @@ class Worker extends User
 
     global $db;
 
-    $sth = $db->prepare('SELECT * FROM caravanmodels WHERE producer=:producer AND model=:model limit 1');
+    $sth = $db->query('SELECT * FROM caravanmodels WHERE producer=:producer AND model=:model limit 1');
     $sth->bindValue(':producer', $producer, PDO::PARAM_STR);
     $sth->bindValue(':model', $model, PDO::PARAM_STR);
     $sth->execute();
@@ -126,7 +126,7 @@ class Worker extends User
       die($response);      
     }
 
-    $sth = $db->prepare('INSERT INTO caravanmodels VALUE (NULL,:producer,:model,:price,:weight,:length,:lengthInside,:width,:widthInside,:people,:water,:hotwater,:shower,:fridge,:picture)');
+    $sth = $db->query('INSERT INTO caravanmodels VALUE (NULL,:producer,:model,:price,:weight,:length,:lengthInside,:width,:widthInside,:people,:water,:hotwater,:shower,:fridge,:picture)');
     $sth->bindValue(':producer', $producer, PDO::PARAM_STR);
     $sth->bindValue(':model', $model, PDO::PARAM_STR);
     $sth->bindValue(':price', $price, PDO::PARAM_STR);

@@ -7,7 +7,9 @@ require_once("class/CaravanModel.php");
    * Tworzy listę przyczep 
    */
 
-$stmt = $db->prepare('SELECT * FROM caravans ');
+  $db = SingletonDB::getInstance();
+
+$stmt = $db->query('SELECT * FROM caravans ');
 $stmt->execute();
 
 if ($stmt->rowCount() > 0) {
@@ -20,7 +22,7 @@ if ($stmt->rowCount() > 0) {
     return(json_encode("brak przyczep"));
 
 
-    $stmt = $db->prepare('SELECT * FROM caravanmodels');
+    $stmt = $db->query('SELECT * FROM caravanmodels');
     $stmt->execute();
 
 if ($stmt->rowCount() > 0) {

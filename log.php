@@ -4,13 +4,7 @@ session_start();
 if(isset($_SESSION['userID']))
 header("Location: index.php"); 
 
-require_once("config.php");
-require_once("class/User.php");
-require_once("class/Client.php");
-require_once("class/Worker.php");
-require_once("class/Caravan.php");
-require_once("class/Reservation.php");
-require_once("caravanList.php");
+
 ?>
 <!DOCTYPE html>
 <html lang="pl">

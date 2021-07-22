@@ -28,8 +28,8 @@ require_once("class/Reservation.php");
 require("caravanList.php");
 
 if(isset($_SESSION['userID'])){
-    global $db;
-    $stmt = $db->prepare('SELECT * FROM reservations WHERE userID=:userID');
+    //global $db;
+    $stmt = $db->query('SELECT * FROM reservations WHERE userID=:userID');
     $stmt->bindValue(':userID', $_SESSION['userID'], PDO::PARAM_INT);       
     $stmt->execute();
 

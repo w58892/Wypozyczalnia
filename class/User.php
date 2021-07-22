@@ -4,6 +4,7 @@
    * Zawiera metody dla nie zalogowanych użytkowników
    */
 
+
 class User
 {
   private $userID;
@@ -28,10 +29,11 @@ class User
     if (!empty($response))
       return ($response);
 
-    global $db;
-    $sth = $db->prepare('SELECT * FROM users WHERE email=:email limit 1');
+      $db = SingletonDB::getInstance();
+    $sth = $db->query('SELECT * FROM users WHERE email=:email limit 1');
     $sth->bindValue(':email', $email, PDO::PARAM_STR);
     $sth->execute();
+  
     $user = $sth->fetch(PDO::FETCH_ASSOC);
 
     if ($user) {
@@ -89,9 +91,9 @@ class User
       return($response);
     } 
     $hashPassword = password_hash($password, PASSWORD_DEFAULT);
-    global $db;
+    $db = SingletonDB::getInstance();
 
-    $sth = $db->prepare('SELECT * FROM users WHERE email=:email limit 1');
+    $sth = $db->query('SELECT * FROM users WHERE email=:email limit 1');
     $sth->bindValue(':email', $email, PDO::PARAM_STR);
     $sth->execute();
     $user = $sth->fetch(PDO::FETCH_ASSOC);
@@ -100,7 +102,7 @@ class User
       return($response);
     }
       
-    $sth = $db->prepare('INSERT INTO users (email, password) VALUE (:email,:password)');
+    $sth = $db->query('INSERT INTO users (email, password) VALUE (:email,:password)');
     $sth->bindValue(':email', $email, PDO::PARAM_STR);
     $sth->bindValue(':password', $hashPassword, PDO::PARAM_STR);
     $user = $sth->execute();

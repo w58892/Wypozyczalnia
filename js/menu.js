@@ -1,8 +1,7 @@
 document.getElementById("btn_loguj").addEventListener("click", 
     function(){
-        email = document.getElementById("email").value;
-        password = document.getElementById("password").value;
-        login(email, password);
+
+        login();
     }
 ); 
 

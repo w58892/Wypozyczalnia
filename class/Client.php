@@ -4,6 +4,7 @@
  * Zawiera metody do których dostęp mają jedynie zalogowani użytkownicy
  */
 
+
 class Client extends User
 {
 
@@ -12,12 +13,12 @@ class Client extends User
    */
   public function addReservation($modelID,$begin,$end){
 
-    global $db;
+    $db = SingletonDB::getInstance();
 
     if($begin>$end)
       return '{"date":"wrong"}';
     
-    $sth = $db->prepare('SELECT caravans.* FROM caravans LEFT JOIN (SELECT caravans.caravanID FROM caravans INNER JOIN reservations ON 
+    $sth = $db->query('SELECT caravans.* FROM caravans LEFT JOIN (SELECT caravans.caravanID FROM caravans INNER JOIN reservations ON 
       reservations.caravanID = caravans.caravanID WHERE caravans.modelID=:modelID AND reservations.end > :begin
       AND reservations.begin < :end ) as t2 ON caravans.caravanID = t2.caravanID WHERE caravans.modelID=:modelID AND t2.caravanID IS NULL LIMIT 1');
     
@@ -31,7 +32,7 @@ class Client extends User
         $caravanID = $row['caravanID'];
       };
           
-      $sth = $db->prepare('INSERT INTO reservations (begin, end, userID, caravanID) VALUE (:begin,:end,:userID,:caravanID)');
+      $sth = $db->query('INSERT INTO reservations (begin, end, userID, caravanID) VALUE (:begin,:end,:userID,:caravanID)');
       $sth->bindValue(':begin', $begin, PDO::PARAM_STR);
       $sth->bindValue(':end', $end, PDO::PARAM_STR);
       $sth->bindValue(':userID', $_SESSION['userID'], PDO::PARAM_INT);        
@@ -45,8 +46,9 @@ class Client extends User
   }
     
   public function modifyReservation($begin,$end,$caravanID,$reservationID){
-    global $db;
-    $sth = $db->prepare('UPDATE reservations SET begin=:begin,end=:end,caravanID=:caravanID WHERE reservationID=:reservationID');
+    $db = SingletonDB::getInstance();
+    
+    $sth = $db->query('UPDATE reservations SET begin=:begin,end=:end,caravanID=:caravanID WHERE reservationID=:reservationID');
     $sth->bindValue(':begin', $begin, PDO::PARAM_STR);
     $sth->bindValue(':end', $end, PDO::PARAM_STR);
     $sth->bindValue(':caravanID', $caravanID, PDO::PARAM_INT);
@@ -63,9 +65,9 @@ class Client extends User
    */
   public function deleteReservation($reservationID){
     
-    global $db;
-    
-    $sth = $db->prepare('DELETE FROM reservations WHERE reservationID=:reservationID');
+    $db = SingletonDB::getInstance();
+        
+    $sth = $db->query('DELETE FROM reservations WHERE reservationID=:reservationID');
     $sth->bindValue(':reservationID', $reservationID, PDO::PARAM_INT);
     $del = $sth->execute();
     
