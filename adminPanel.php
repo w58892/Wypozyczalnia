@@ -24,10 +24,11 @@ if(isset($_SESSION['admin'])){
     <link rel="stylesheet" href="css/styles.css">
 </head>
     <body>
-    <header>
-        <a id="href" href="index.php"><img src='images/logo.png'/></a>
+    <header id="header">
+        <a id="href" href="index.php"><img id = "logo" src='images/logoBlack.png'/></a>
         <nav>
-            <a id="href" href="logout.php">Wyloguj</a>
+            <a class="color" href="logout.php">Wyloguj</a>
+            <input type="button" id="colorBTN" class="light" value="Ciemny">
         </nav>
     </header> 
         <h1>Dodaj przyczepę</h1>
@@ -123,6 +124,7 @@ if(isset($_SESSION['admin'])){
 
 
     </body>
+    <script type="text/javascript" src="js/color.js"></script>
     <script src="js/upload.js"></script>
 
 </html>

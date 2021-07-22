@@ -8,21 +8,23 @@
 
 </head>
 <body>
-<header>
+<header id="header">
     
-    <a id="href" href="index.php"><img src='images/logo.png'/></a>
+    <a id="href" href="index.php"><img id="logo" src='images/logoBlack.png'/></a>
     <nav>
     <?php
     session_start();
 
     if(isset($_SESSION['userID']))
     {?>
-        <a id="href" href="userPanel.php">Moje Rezerwacje</a>
-        <a id="href" href="logout.php">Wyloguj</a>
+        <a class="color" href="userPanel.php">Moje Rezerwacje</a>
+        <a class="color" href="logout.php">Wyloguj</a>
     <?php
     }else{ ?>
-        <a id="href" href="log.php">Zaloguj</a>
+        <a class="color" href="log.php">Zaloguj</a>
     <?php } ?>
+    <input type="button" id="colorBTN" class="light" value="Ciemny">
+
     </nav>
 </header>
 
@@ -137,6 +139,7 @@ for($i = 0;$i<count($caravanModels);$i++)
 </section>
 
 </body>
+<script type="text/javascript" src="js/color.js"></script>
 <script type="text/javascript" src="js/res.js"></script>
 
 </html>

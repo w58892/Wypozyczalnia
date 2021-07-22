@@ -10,18 +10,20 @@ require_once("caravanList.php");
 ?>
 <html>
 <body>
-  <header>
-  <a id="href" href="index.php"><img src='images/logo.png'/></a>
+  <header id="header">
+  <a href="index.php"><img id = "logo" src='images/logoBlack.png'/></a>
     <nav>
         <?php if (isset($_SESSION['admin'])){  ?>
-          <a id="href" href="adminPanel.php">Panel administratora</a>
-          <a id="href" href="logout.php">Wyloguj</a>
+          <a class="color" href="adminPanel.php">Panel administratora</a>
+          <a class="color" href="logout.php">Wyloguj</a>
         <?php }else if(isset($_SESSION['userID'])){ ?>
-          <a id="href" href="userPanel.php">Moje Rezerwacje</a>
-          <a id="href" href="logout.php">Wyloguj</a>
+          <a class="color" href="userPanel.php">Moje Rezerwacje</a>
+          <a class="color" href="logout.php">Wyloguj</a>
         <?php }else{ ?>
-          <a id="href" href="log.php">Zaloguj</a>
-        <?php } ?> 
+          <a class="color" href="log.php">Zaloguj</a>
+
+        <?php } ?>           
+        <input type="button" id="colorBTN" class="light" value="Ciemny">
     </nav>
   </header>
 
@@ -35,7 +37,7 @@ require_once("caravanList.php");
     <?php
 
     $hobby = new CaravanModelFactory();
-    $hobby = $hobby->MakeCar("Hobby");
+    $hobby = $hobby->MakeCaravan("Hobby");
     $hobby =  $hobby->GetCaravans();
       for($i = 0;$i<count($hobby);$i++)
       { ?>
@@ -63,7 +65,7 @@ require_once("caravanList.php");
     <?php
 
     $buersnter = new CaravanModelFactory();
-    $buersnter = $buersnter->MakeCar("Buersnter");
+    $buersnter = $buersnter->MakeCaravan("Buersnter");
     $buersnter =  $buersnter->GetCaravans();
       for($i = 0;$i<count($buersnter);$i++)
       { ?>
@@ -85,5 +87,6 @@ require_once("caravanList.php");
       } ?>  
   </div>
   <link rel="stylesheet" href="css/styles.css">
+  <script type="text/javascript" src="js/color.js"></script>
 </body>
 </html>

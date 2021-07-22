@@ -37,11 +37,6 @@ h2{
     font-size: large;
 }
 
-header a{
-    text-decoration: none;
-    color:black;
-    margin-right:20px;
-}
 
 header {
     position: fixed;
@@ -53,9 +48,17 @@ header {
     width: 100%;
     max-width: 1200px;
     margin:0 auto;
-    background: white;
     text-align: center;
     height: 100px;
+    background-color: white;
+        color:black;
+
+}
+
+
+header a{
+    text-decoration: none;
+    margin-right:20px;
 }
 
 header img{
@@ -64,7 +67,6 @@ header img{
 }
 
 nav{
-
     text-align: right;
 }
 
@@ -74,6 +76,28 @@ nav{
     font-size: 19px;
     font-weight: bold;
     cursor: pointer;
+}
+
+#href{
+    color:black;
+}
+
+.light{
+    padding: .375rem .75rem;
+    color:white;
+    background-color: black;
+    font-size: 1rem;
+    border-radius: 1.25rem;
+    border-width: 0;
+}
+
+.dark{
+    padding: .375rem .75rem;
+    color:black;
+    background-color: white;
+    font-size: 1rem;
+    border-radius: 1.25rem;
+    border-width: 0;
 }
 
 
@@ -189,6 +213,7 @@ nav{
 .specyfication tr:nth-of-type(2n){
     width: 50%;
     background-color:rgb(228, 224, 224) ;
+    color:red;
 }
 
 .caravanIMG{

@@ -20,8 +20,9 @@ header("Location: index.php");
 </head>
 
 <body>
-  <header>
-  <a id="href" href="index.php"><img src='images/logo.png'/></a>
+  <header id="header">
+  <a id="href" href="index.php"><img id="logo" src='images/logoBlack.png'/></a>
+  <input type="button" id="colorBTN" class="light" value="Ciemny">
   </header>
 
     <section class="login">
@@ -59,8 +60,7 @@ header("Location: index.php");
 
 </body>
 
-<!--<script type="text/javascript" src="JS/skrypt.js"></script>-->
+    <script type="text/javascript" src="js/color.js"></script>
     <script type="text/javascript" src="js/menu.js"></script>
-    <link rel="stylesheet" type="text/css" href="style.css" />
 
 </html>

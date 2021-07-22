@@ -15,7 +15,8 @@ class Client extends User
 
     $db = SingletonDB::getInstance();
 
-    if($begin>$end)
+    $data=date("Y-m-d");
+    if($begin>$end||$begin<$data)
       return '{"date":"wrong"}';
     
     $sth = $db->query('SELECT caravans.* FROM caravans LEFT JOIN (SELECT caravans.caravanID FROM caravans INNER JOIN reservations ON 

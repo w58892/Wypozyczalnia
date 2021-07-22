@@ -180,16 +180,16 @@ class Buersnter  implements ICaravanModel
 
 interface ICaravanModelFactory
 {
-    public function MakeCar(string $name);
+    public function MakeCaravan(string $company);
 }
 
 class CaravanModelFactory implements ICaravanModelFactory
 {
 
  
-    public function MakeCar(string $name)
+    public function MakeCaravan(string $company)
     {
-      switch ($name)
+      switch ($company)
       {
           case "Hobby":
               return new Hobby();
